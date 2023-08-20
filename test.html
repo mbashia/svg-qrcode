@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<script src="
+https://cdn.jsdelivr.net/npm/jquery-ean13@2.2.5/dist/ean13.min.js
+"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.0/JsBarcode.all.min.js"></script>
+
+</head>
+<body>
+    <canvas id = "ean">uuuuuu jjj jj f</canvas>
+    <div id = "output"></div>
+    
+    <div id = "input"> g</div>
+<svg id="barcode"></svg>
+<svg class="barcode"
+  jsbarcode-format="CODE39"
+  jsbarcode-value="1234jj56789012"
+  jsbarcode-textmargin="0"
+  jsbarcode-fontoptions="bold"
+  displayValue = false>
+</svg>
+    <script src="
+https://cdn.jsdelivr.net/npm/qrcode-svg@1.1.0/dist/qrcode.min.js
+"></script>
+ 
+
+    <script>
+        JsBarcode("#barcode", "hello IIIKJ HHUH UHHI KKHIH KKNJH999world ", {displayValue: false,
+            format: "CODE39"
+});
+JsBarcode(".barcode").init();
+
+ var value =  new QRCode("CSS tjjkkjkjkjkjhhtScript").svg();
+   document.getElementById("output").innerHTML = "<p>" + value + "</p>";
+var element = document.getElementById("ean");
+barcode = new EAN13(element, "9002236311036");
+
+   document.getElementById("input").innerHTML = barcode;
+
+
+
+
+
+    </script>
+</body>
+</html>
