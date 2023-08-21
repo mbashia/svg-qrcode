@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<script src="
+https://cdn.jsdelivr.net/npm/jquery-ean13@2.2.5/dist/ean13.min.js
+"></script>
+
+</head>
+<body>
+
+<svg id="barcode"></svg>
+<div class = "link"></div>
+<svg class = "codes" id = "e956789111111"></svg>
+<svg class = "codes" id = "e256789111111"></svg>
+
+<svg class = "codes" id = "e857789111111"></svg>
+
+<svg class = "codes" id = "e756789111111"></svg>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.0/JsBarcode.all.min.js"></script>
+</script>
+
+    <script src="
+https://cdn.jsdelivr.net/npm/qrcode-svg@1.1.0/dist/qrcode.min.js
+"></script>
+ 
+
+    <script>
+const codes = document.querySelectorAll('.codes');
+
+for (var i = 0; i < codes.length; i++) {
+    var txt = codes[i].id;
+    console.log("#"+txt);
+
+    JsBarcode("#"+txt, txt.substr(1,13),
+     {
+        displayValue: true,
+        format: "ean13"
+    });
+    
+           
+            
+        }
+//       JsBarcode("#barcode", "956789111111", {displayValue: true,
+//             format: "ean13"
+// });
+
+// var container = document.getElementById("barcode");
+
+// codes.forEach(function(value) {
+//     var element = document.createElement("div");
+//     element.className = "barcode";
+
+//     var barcode = new EAN13(element, value);
+
+//     container.appendChild(element);
+// });
+
+var svg = document.getElementById("barcode");
+var serializer = new XMLSerializer();
+var source = serializer.serializeToString(svg);
+if(!source.match(/^<svg[^>]+xmlns="http\:\/\/www\.w3\.org\/2000\/svg"/)){
+    source = source.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
+}
+if(!source.match(/^<svg[^>]+"http\:\/\/www\.w3\.org\/1999\/xlink"/)){
+    source = source.replace(/^<svg/, '<svg xmlns:xlink="http://www.w3.org/1999/xlink"');
+}
+
+//add xml declaration
+source = '<?xml version="1.0" standalone="no"?>\r\n' + source;
+
+var url = "data:image/svg+xml;charset=utf-8,"+encodeURIComponent(source);
+document.querySelector(".link").innerHTML = '<a href="' + url + '" download="barcode.svg">Download Barcode</a>';
+
+
+    </script>
+</body>
+</html>
