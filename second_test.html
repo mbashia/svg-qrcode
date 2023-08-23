@@ -72,7 +72,9 @@ if(!source.match(/^<svg[^>]+"http\:\/\/www\.w3\.org\/1999\/xlink"/)){
 //add xml declaration
 source = '<?xml version="1.0" standalone="no"?>\r\n' + source;
 
+
 var url = "data:image/svg+xml;charset=utf-8,"+encodeURIComponent(source);
+console.log(url);
 document.querySelector(".link").innerHTML = '<a href="' + url + '" download="barcode.svg">Download Barcode</a>';
 
 
